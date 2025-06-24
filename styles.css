@@ -1,0 +1,612 @@
+/* Main Stylesheet for Camera Confidence Coaching */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:
+        "Outfit",
+        "Inter",
+        -apple-system,
+        BlinkMacSystemFont,
+        sans-serif;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #ffffff;
+    padding-top: 80px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation Styles */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #f8f9fa;
+    padding: 24px 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    width: 24px;
+    height: 18px;
+    justify-content: space-between;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 2px;
+    background: #999999;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.nav-menu {
+    position: absolute;
+    top: 100%;
+    right: 24px;
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 16px 0;
+    min-width: 200px;
+    display: none;
+    z-index: 50;
+}
+
+.nav-menu.active {
+    display: block;
+}
+
+.nav-menu li {
+    list-style: none;
+}
+
+.nav-menu li a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #666666;
+    font-weight: 400;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+.nav-menu li a:hover {
+    color: #1a1a1a;
+    background: #f8f9fa;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-family: "Inter", sans-serif;
+    text-rendering: optimizeLegibility;
+}
+
+.hero .subtitle {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    color: #4a4a4a;
+    margin-bottom: 3rem;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+    font-family: "Inter", sans-serif;
+}
+
+/* Sections */
+.section {
+    padding: 60px 0;
+}
+
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 40px;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.story-section {
+    padding: 60px 0;
+}
+
+.story-section p {
+    font-size: 20px;
+    margin-bottom: 24px;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+.story-section p.lead {
+    font-size: 22px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 32px;
+}
+
+/* Benefits Grid */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.benefit-item {
+    padding: 0;
+}
+
+.benefit-item h3 {
+    font-size: 20px;
+    color: #000000;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.benefit-item p {
+    color: #666666;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Service Cards */
+.service-card {
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 40px;
+    margin-bottom: 40px;
+}
+
+.service-number {
+    font-size: 14px;
+    color: #999999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.service-title {
+    font-size: 28px;
+    color: #000000;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.service-subtitle {
+    font-size: 18px;
+    color: #666666;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+.service-price {
+    font-size: 32px;
+    font-weight: 700;
+    color: #000000;
+    margin: 20px 0;
+}
+
+.service-description {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+    margin: 16px 0 24px 0;
+}
+
+.features-list {
+    list-style: none;
+    margin: 32px 0;
+}
+
+.features-list li {
+    padding: 8px 0;
+    color: #1a1a1a;
+    position: relative;
+    padding-left: 24px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.features-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #000000;
+    font-weight: bold;
+}
+
+/* Buttons */
+.cta-button {
+    background: #000000;
+    color: #ffffff;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 24px;
+    transition: all 0.2s ease;
+}
+
+.cta-button:hover {
+    background: #333333;
+    transform: translateY(-1px);
+}
+
+/* Testimonials */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin: 40px 0;
+}
+
+.testimonial {
+    padding: 0;
+    text-align: left;
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 16px;
+    object-fit: cover;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: #000000;
+    font-size: 16px;
+    margin: 0;
+}
+
+.testimonial-title {
+    color: #666666;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.testimonial-text {
+    font-size: 16px;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* Video Components */
+.video-testimonial {
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e5e5e5;
+    transition: all 0.2s ease;
+}
+
+.video-testimonial:hover {
+    border-color: #000000;
+}
+
+.video-thumbnail {
+    position: relative;
+    background: #000000;
+}
+
+.video-thumbnail::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+}
+
+.video-thumbnail::before {
+    content: "▶";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-45%, -50%);
+    color: #000000;
+    font-size: 20px;
+    z-index: 1;
+}
+
+.video-title {
+    padding: 12px 16px;
+    background: #ffffff;
+    font-weight: 500;
+    color: #1a1a1a;
+    text-align: center;
+    font-size: 14px;
+}
+
+.video-testimonials {
+    margin: 32px 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* Qualification Section */
+.qualification-section {
+    padding: 60px 0;
+    background: #f8f9fa;
+}
+
+.qualification-section h2 {
+    font-size: 32px;
+    color: #000000;
+    margin-bottom: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.qualification-section > p {
+    font-size: 18px;
+    color: #666666;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.good-fit h3 {
+    font-size: 20px;
+    margin-bottom: 24px;
+    color: #000000;
+    font-weight: 600;
+}
+
+.fit-list {
+    list-style: none;
+}
+
+.fit-list li {
+    padding: 8px 0;
+    position: relative;
+    padding-left: 32px;
+    color: #1a1a1a;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.good-fit .fit-list li:before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    font-size: 16px;
+}
+
+/* About Section */
+.about-section {
+    padding: 60px 0;
+    text-align: left;
+}
+
+.about-section h2 {
+    font-size: 32px;
+    margin-bottom: 32px;
+    font-weight: 700;
+    color: #000000;
+    text-align: center;
+}
+
+.about-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+/* Final CTA */
+.final-cta {
+    padding: 60px 0;
+    text-align: left;
+}
+
+.final-cta p {
+    font-size: 18px;
+    color: #666666;
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+.final-cta .cta-button {
+    font-size: 18px;
+    padding: 18px 36px;
+}
+
+/* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox-content {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    background: #000000;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #ffffff;
+    font-size: 30px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.lightbox-video {
+    width: 100%;
+    height: 0;
+    position: relative;
+}
+
+.lightbox-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 16px;
+    }
+
+    .nav-menu {
+        right: 16px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero .subtitle {
+        font-size: 20px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+
+    .service-card {
+        padding: 24px;
+    }
+
+    .benefits-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .lightbox-content {
+        width: 95%;
+        margin: 20px;
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection styles */
+::selection {
+    background: rgba(0, 0, 0, 0.1);
+}
