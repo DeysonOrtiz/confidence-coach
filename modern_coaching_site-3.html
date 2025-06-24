@@ -1,0 +1,983 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Camera Confidence Coaching</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                line-height: 1.6;
+                color: #333333;
+                background: #ffffff;
+            }
+
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .hero {
+                padding: 80px 0;
+                text-align: left;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+                font-weight: 700;
+                color: #000000;
+                margin-bottom: 24px;
+                line-height: 1.1;
+            }
+
+            .hero .subtitle {
+                font-size: 24px;
+                color: #666666;
+                margin-bottom: 40px;
+                font-weight: 400;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 36px;
+                font-weight: 700;
+                color: #000000;
+                margin-bottom: 40px;
+                line-height: 1.2;
+            }
+
+            .story-section {
+                padding: 60px 0;
+            }
+
+            .story-section p {
+                font-size: 18px;
+                margin-bottom: 24px;
+                color: #333333;
+                line-height: 1.6;
+            }
+
+            .story-section p.lead {
+                font-size: 22px;
+                font-weight: 600;
+                color: #000000;
+                margin-bottom: 32px;
+            }
+
+            .benefits-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 40px;
+                margin: 40px 0;
+            }
+
+            .benefit-item {
+                padding: 0;
+            }
+
+            .benefit-item h3 {
+                font-size: 20px;
+                color: #000000;
+                margin-bottom: 12px;
+                font-weight: 600;
+            }
+
+            .benefit-item p {
+                color: #666666;
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+            .service-card {
+                background: #ffffff;
+                border: 1px solid #e5e5e5;
+                border-radius: 8px;
+                padding: 40px;
+                margin-bottom: 40px;
+            }
+
+            .service-number {
+                font-size: 14px;
+                color: #999999;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-bottom: 12px;
+                font-weight: 500;
+            }
+
+            .service-title {
+                font-size: 28px;
+                color: #000000;
+                font-weight: 700;
+                margin-bottom: 8px;
+            }
+
+            .service-subtitle {
+                font-size: 18px;
+                color: #666666;
+                margin-bottom: 20px;
+                font-weight: 400;
+            }
+
+            .service-price {
+                font-size: 32px;
+                font-weight: 700;
+                color: #000000;
+                margin: 20px 0;
+            }
+
+            .service-description {
+                font-size: 16px;
+                font-weight: 500;
+                color: #000000;
+                margin: 16px 0 24px 0;
+            }
+
+            .features-list {
+                list-style: none;
+                margin: 32px 0;
+            }
+
+            .features-list li {
+                padding: 8px 0;
+                color: #333333;
+                position: relative;
+                padding-left: 24px;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            .features-list li:before {
+                content: "✓";
+                position: absolute;
+                left: 0;
+                color: #000000;
+                font-weight: bold;
+            }
+
+            .cta-button {
+                background: #000000;
+                color: #ffffff;
+                padding: 16px 32px;
+                border: none;
+                border-radius: 6px;
+                font-size: 16px;
+                font-weight: 600;
+                cursor: pointer;
+                text-decoration: none;
+                display: inline-block;
+                margin-top: 24px;
+                transition: all 0.2s ease;
+            }
+
+            .cta-button:hover {
+                background: #333333;
+                transform: translateY(-1px);
+            }
+
+            .comparison-table-wrapper {
+                overflow-x: auto;
+                margin: 40px 0;
+            }
+
+            .comparison-table {
+                width: 100%;
+                border-collapse: collapse;
+                border: 1px solid #e5e5e5;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 20px;
+                text-align: left;
+                border-bottom: 1px solid #e5e5e5;
+            }
+
+            .comparison-table th {
+                background: #f8f9fa;
+                color: #000000;
+                font-weight: 600;
+                font-size: 16px;
+            }
+
+            .comparison-table td {
+                background: #ffffff;
+                color: #333333;
+                font-size: 16px;
+            }
+
+            .testimonials-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 40px;
+                margin: 40px 0;
+            }
+
+            .testimonial {
+                padding: 0;
+                text-align: left;
+            }
+
+            .testimonial-header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 16px;
+            }
+
+            .testimonial-avatar {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                margin-right: 16px;
+                object-fit: cover;
+            }
+
+            .testimonial-author {
+                font-weight: 600;
+                color: #000000;
+                font-size: 16px;
+                margin: 0;
+            }
+
+            .testimonial-title {
+                color: #666666;
+                font-size: 14px;
+                font-weight: 400;
+                margin: 0;
+            }
+
+            .testimonial-text {
+                font-size: 16px;
+                color: #333333;
+                margin-bottom: 20px;
+                line-height: 1.6;
+                font-style: italic;
+            }
+
+            .video-testimonial {
+                margin-top: 20px;
+                cursor: pointer;
+                border-radius: 8px;
+                overflow: hidden;
+                border: 1px solid #e5e5e5;
+                transition: all 0.2s ease;
+            }
+
+            .video-testimonial:hover {
+                border-color: #000000;
+            }
+
+            .video-thumbnail {
+                position: relative;
+                background: #000000;
+            }
+
+            .video-thumbnail::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 60px;
+                height: 60px;
+                background: rgba(255, 255, 255, 0.9);
+                border-radius: 50%;
+            }
+
+            .video-thumbnail::before {
+                content: '▶';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-45%, -50%);
+                color: #000000;
+                font-size: 20px;
+                z-index: 1;
+            }
+
+            .video-title {
+                padding: 12px 16px;
+                background: #ffffff;
+                font-weight: 500;
+                color: #333333;
+                text-align: center;
+                font-size: 14px;
+            }
+
+            .qualification-section {
+                padding: 60px 0;
+                background: #f8f9fa;
+            }
+
+            .qualification-section h2 {
+                font-size: 32px;
+                color: #000000;
+                margin-bottom: 16px;
+                font-weight: 700;
+            }
+
+            .qualification-section > p {
+                font-size: 18px;
+                color: #666666;
+                margin-bottom: 40px;
+                line-height: 1.6;
+            }
+
+            .good-fit h3 {
+                font-size: 20px;
+                margin-bottom: 24px;
+                color: #000000;
+                font-weight: 600;
+            }
+
+            .fit-list {
+                list-style: none;
+            }
+
+            .fit-list li {
+                padding: 8px 0;
+                position: relative;
+                padding-left: 32px;
+                color: #333333;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+
+            .good-fit .fit-list li:before {
+                content: "✅";
+                position: absolute;
+                left: 0;
+                font-size: 16px;
+            }
+
+            .about-section {
+                padding: 60px 0;
+                text-align: left;
+            }
+
+            .about-section h2 {
+                font-size: 32px;
+                margin-bottom: 32px;
+                font-weight: 700;
+                color: #000000;
+            }
+
+            .about-section p {
+                font-size: 16px;
+                margin-bottom: 20px;
+                color: #333333;
+                line-height: 1.6;
+            }
+
+            .video-testimonials {
+                margin: 32px 0;
+                display: flex;
+                justify-content: flex-start;
+            }
+
+            .final-cta {
+                padding: 60px 0;
+                text-align: left;
+            }
+
+            .final-cta p {
+                font-size: 18px;
+                color: #666666;
+                margin-bottom: 32px;
+                line-height: 1.6;
+            }
+
+            .final-cta .cta-button {
+                font-size: 18px;
+                padding: 18px 36px;
+            }
+
+            /* Lightbox Styles */
+            .lightbox {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.9);
+                z-index: 1000;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .lightbox.active {
+                display: flex;
+            }
+
+            .lightbox-content {
+                position: relative;
+                width: 90%;
+                max-width: 800px;
+                background: #000000;
+                border-radius: 8px;
+                overflow: hidden;
+            }
+
+            .lightbox-close {
+                position: absolute;
+                top: -40px;
+                right: 0;
+                color: #ffffff;
+                font-size: 30px;
+                cursor: pointer;
+                background: rgba(0, 0, 0, 0.5);
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.2s ease;
+            }
+
+            .lightbox-close:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            .lightbox-video {
+                width: 100%;
+                height: 0;
+                position: relative;
+            }
+
+            .lightbox-video iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            @media (max-width: 768px) {
+                .container {
+                    padding: 0 16px;
+                }
+
+                .hero h1 {
+                    font-size: 36px;
+                }
+
+                .hero .subtitle {
+                    font-size: 20px;
+                }
+
+                .section-title {
+                    font-size: 28px;
+                }
+
+                .service-card {
+                    padding: 24px;
+                }
+
+                .benefits-grid,
+                .testimonials-grid {
+                    grid-template-columns: 1fr;
+                    gap: 24px;
+                }
+
+                .comparison-table th,
+                .comparison-table td {
+                    padding: 12px;
+                    font-size: 14px;
+                }
+
+                .lightbox-content {
+                    width: 95%;
+                    margin: 20px;
+                }
+            }
+
+            /* Responsive table for mobile */
+            @media (max-width: 768px) {
+                .comparison-table thead {
+                    display: none;
+                }
+
+                .comparison-table,
+                .comparison-table tbody,
+                .comparison-table tr,
+                .comparison-table td {
+                    display: block;
+                    width: 100%;
+                }
+
+                .comparison-table tr {
+                    margin-bottom: 20px;
+                    border-bottom: 2px solid #e5e5e5;
+                    padding-bottom: 16px;
+                }
+
+                .comparison-table td {
+                    text-align: left;
+                    padding-left: 40%;
+                    position: relative;
+                    border: none;
+                    border-bottom: 1px solid #e5e5e5;
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                }
+
+                .comparison-table td:last-child {
+                    border-bottom: none;
+                }
+
+                .comparison-table td::before {
+                    content: attr(data-label);
+                    position: absolute;
+                    left: 12px;
+                    width: 35%;
+                    white-space: nowrap;
+                    font-weight: 600;
+                    color: #000000;
+                    font-size: 14px;
+                }
+            }
+
+            /* Smooth scrolling */
+            html {
+                scroll-behavior: smooth;
+            }
+
+            /* Selection styles */
+            ::selection {
+                background: rgba(0, 0, 0, 0.1);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h1>Transform Your Expertise Into Magnetic Authority</h1>
+                <p class="subtitle">
+                    Camera confidence transforms your unique expertise into a client-attracting superpower.
+                </p>
+            </section>
+
+            <!-- Story Section -->
+            <section class="story-section">
+                <p>
+                    You have a vision.
+                </p>
+                <p>
+                    You want to become the go-to expert in your field. The person everyone thinks of first. The professional who attracts dream clients effortlessly and commands premium fees because of your distinctive expertise and magnetic presence.
+                </p>
+                
+                <p>
+                    Today, that vision will become reality.
+                </p>
+                
+                <p>
+                    You can take your unique perspective, amplify it with confident video presence, and transform yourself into the magnetic authority that ideal clients actively seek out. When you master this, you become the obvious choice everyone wants to work with.
+                </p>
+                
+                <p class="lead">The best approach focuses on amplification, not imitation.</p>
+                
+                <p>
+                    Learn how to confidently present your authentic voice and become the most powerful, compelling version of yourself on camera.
+                </p>
+                
+                <p>
+                    When you master this, you create something remarkable: a presence so authentically powerful that opportunities flow to you naturally.
+                </p>
+                
+                <p class="lead">
+                    My Camera Confidence Coaching is the result of 30 years of video mastery, 12 years of performance training, and proven methods that help professionals turn their unique voice into their ultimate business asset.
+                </p>
+                
+                <p>
+                    This is not about changing who you are but about amplifying what makes you extraordinary. Because when you master the art of being authentically, confidently yourself on camera, something magical happens: your dream clients are drawn to you like a magnet.
+                </p>
+            </section>
+
+            <!-- Benefits Section -->
+            <section class="section">
+                <h2 class="section-title">
+                    What You Will Learn
+                </h2>
+                
+                <p style="font-size: 18px; color: #666666; margin-bottom: 40px; text-align: center;">
+                    You will discover the magnetic power of your authentic voice and turn it into measurable business results that transform your entire professional future.
+                </p>
+
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <h3>Discover Your Signature Presence</h3>
+                        <p>
+                            Stop trying to copy other "successful" people. Learn exactly how to identify and amplify what makes your communication style uniquely compelling — turning your natural approach into your biggest competitive advantage.
+                        </p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>Transform Expertise Into Revenue</h3>
+                        <p>
+                            Your knowledge is valuable, but buried knowledge doesn't pay the bills. Learn the exact frameworks to package your insights into content that attracts premium clients, commands higher fees, and generates opportunities automatically.
+                        </p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>Build Your Magnetic Authority</h3>
+                        <p>
+                            Discover how to position your unique perspective so powerfully that you become the go-to expert in your field. When people think of your area of expertise, they think of you first — opening doors to premium opportunities and dream collaborations.
+                        </p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>Master Authentic Authority</h3>
+                        <p>
+                            Develop the genuine presence that makes people stop scrolling, lean in, and remember everything you say. Using techniques from 12 years of performance training, you will discover how to be powerfully, authentically yourself on camera.
+                        </p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>Scale Your Voice, Scale Your Impact</h3>
+                        <p>
+                            One video with your authentic voice reaches thousands of ideal clients simultaneously. Learn how to turn your distinctive communication style into a 24/7 client attraction system that creates opportunities while you focus on your craft.
+                        </p>
+                    </div>
+                    <div class="benefit-item">
+                        <h3>Technical Mastery Without Overwhelm</h3>
+                        <p>
+                            Get the production quality that makes your voice shine without getting lost in equipment rabbit holes. Learn the essential technical setup that amplifies your natural presence instead of hiding it.
+                        </p>
+                    </div>
+                </div>
+
+                <p style="font-size: 18px; color: #000000; margin-top: 40px; font-weight: 600; text-align: center;">
+                    Your voice is already unique. Now learn how to make it irresistible.
+                </p>
+            </section>
+
+            <!-- Services Section -->
+            <section class="section">
+                <h2 class="section-title">Professional Video Confidence Programs</h2>
+
+                <div class="service-card">
+                    <div class="service-number">Program 1</div>
+                    <h3 class="service-title">Confidence Accelerator</h3>
+                    <p class="service-subtitle">Strategic Coaching + Technical Excellence</p>
+                    <div class="service-price">$4,500</div>
+                    <p class="service-description">
+                        Master camera confidence with proven systems and expert guidance. Complete professional camera kit included.
+                    </p>
+
+                    <ul class="features-list">
+                        <li>Complete camera kit delivered to your door (camera, tripod, lighting, microphone)</li>
+                        <li>4-week intensive program with measurable confidence gains</li>
+                        <li>10-15 professionally edited videos that establish your authority</li>
+                        <li>Strategic one-on-one coaching sessions</li>
+                        <li>Content strategy that positions you as the market leader</li>
+                        <li>Technical optimization for professional results</li>
+                        <li>Confidence-building techniques that deliver lasting results</li>
+                        <li>Professional editing and production support</li>
+                        <li>All equipment yours to keep</li>
+                    </ul>
+
+                    <button class="cta-button">Secure Your Confidence Advantage</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">Program 2</div>
+                    <h3 class="service-title">Complete Production</h3>
+                    <p class="service-subtitle">Full-Service Video + Strategic Coaching</p>
+                    <div class="service-price">$9,500</div>
+                    <p class="service-description">
+                        Professional production with strategic coaching for maximum impact.
+                    </p>
+
+                    <ul class="features-list">
+                        <li>6-week comprehensive program with quantifiable results</li>
+                        <li>15-20 high-impact professional videos and show content</li>
+                        <li>Complete production team with professional equipment</li>
+                        <li>Real-time coaching during all filming sessions</li>
+                        <li>Dedicated project manager ensures flawless execution</li>
+                        <li>Strategic pre-session planning eliminates uncertainty</li>
+                        <li>Complete setup, filming, and breakdown service</li>
+                        <li>Expert messaging and positioning strategy</li>
+                        <li>Expedited delivery for time-sensitive opportunities</li>
+                        <li>Flexible scheduling that accommodates executive priorities</li>
+                        <li>Content strategy aligned with business objectives</li>
+                        <li>Publication-ready video assets delivered on schedule</li>
+                    </ul>
+
+                    <button class="cta-button">Claim Your Production Partnership</button>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">Program 3</div>
+                    <h3 class="service-title">Studio Mastery</h3>
+                    <p class="service-subtitle">Custom Studio + Strategic Development</p>
+                    <div class="service-price">Starting at $20,000</div>
+                    <p class="service-description">
+                        Build your professional studio and establish permanent market advantage.
+                    </p>
+
+                    <ul class="features-list">
+                        <li>6-month comprehensive program with ongoing optimization</li>
+                        <li>25+ professional videos that establish market leadership</li>
+                        <li>Ongoing show production support available</li>
+                        <li>Custom studio designed for sustained competitive advantage</li>
+                        <li>Professional-grade equipment selection and installation</li>
+                        <li>Comprehensive training ensures autonomous operation</li>
+                        <li>Brand-aligned visual and audio optimization</li>
+                        <li>6 months of strategic confidence coaching</li>
+                        <li>Dedicated program management and coordination</li>
+                        <li>Strategic content planning aligned with market positioning</li>
+                        <li>Priority scheduling and executive-level flexibility</li>
+                        <li>Ongoing strategic and technical support</li>
+                    </ul>
+
+                    <button class="cta-button">Secure Your Studio Advantage</button>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="section">
+                <h2 class="section-title">What Now Confident Professionals Say</h2>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial">
+                        <div class="testimonial-header">
+                            <div>
+                                <p class="testimonial-author">Jill Martin</p>
+                                <p class="testimonial-title">Host & Executive Producer</p>
+                            </div>
+                        </div>
+                        <p style="color: #666; font-size: 24px; margin-bottom: 12px;">⭐⭐⭐⭐⭐</p>
+                        <p class="testimonial-text">"Deyson Ortiz expertise and guidance transformed my productions, giving me confidence, professionalism, and the highest quality results. If you are serious about video success, learn from Deyson."</p>
+                        <div class="video-testimonial" onclick="openLightbox('video2')">
+                            <div class="video-thumbnail" style="padding-bottom: 56.25%; position: relative; background: #000;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background: rgba(255, 255, 255, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: #000; font-size: 16px; margin-left: 3px;">▶</span>
+                                </div>
+                            </div>
+                            <div class="video-title">Watch Jill's Story</div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-header">
+                            <div>
+                                <p class="testimonial-author">Chris Faber</p>
+                                <p class="testimonial-title">CGI Artist</p>
+                            </div>
+                        </div>
+                        <p style="color: #666; font-size: 24px; margin-bottom: 12px;">⭐⭐⭐⭐⭐</p>
+                        <p class="testimonial-text">"Within just one hour, I conquered my nerves and embraced speaking on camera. The transformation was immediate and lasting. When it comes to camera confidence, Deyson is the guy you want to learn from."</p>
+                        <div class="video-testimonial" onclick="openLightbox('video1')">
+                            <div class="video-thumbnail" style="padding-bottom: 63.28%; position: relative; background: #000;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background: rgba(255, 255, 255, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: #000; font-size: 16px; margin-left: 3px;">▶</span>
+                                </div>
+                            </div>
+                            <div class="video-title">Watch Chris's Transformation</div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <div class="testimonial-header">
+                            <div>
+                                <p class="testimonial-author">Juan de Beer-Odendal</p>
+                                <p class="testimonial-title">Business Owner</p>
+                            </div>
+                        </div>
+                        <p style="color: #666; font-size: 24px; margin-bottom: 12px;">⭐⭐⭐⭐⭐</p>
+                        <p class="testimonial-text">"You have forever changed my world with your ingenious video content creation process. Thank you for transforming my world and business. Deyson deep understanding of both the technical and confidence sides is unmatched."</p>
+                        <div class="video-testimonial" onclick="openLightbox('video3')">
+                            <div class="video-thumbnail" style="padding-bottom: 100%; position: relative; background: #000;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background: rgba(255, 255, 255, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: #000; font-size: 16px; margin-left: 3px;">▶</span>
+                                </div>
+                            </div>
+                            <div class="video-title">Watch Juan's Testimonial</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lightbox -->
+                <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+                    <div class="lightbox-content">
+                        <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
+                        <div id="lightbox-video" class="lightbox-video"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Qualification Section -->
+            <section class="qualification-section">
+                <h2>Who This Program Is For</h2>
+                <p>
+                    Not everyone is going to be a right fit for Camera Confidence Coaching.
+                </p>
+
+                <div class="good-fit">
+                    <h3>You are a good fit for this program if:</h3>
+                    <ul class="fit-list">
+                        <li>You know that this program is a tool, and you will need to use it</li>
+                        <li>You are willing to practice and show up consistently on camera</li>
+                        <li>You know that, like with anything, showing up every day and patience is required to build confidence</li>
+                        <li>You understand that if confidence was just a one-size-fits-all simple formula, then everyone would be confident</li>
+                        <li>You take action and do not allow yourself to make excuses that keep you from moving forward</li>
+                        <li>You are willing to reach out and get the help you need when you get stuck</li>
+                        <li>You recognize that confident presence drives revenue and market position</li>
+                        <li>You value measurable results over generic advice</li>
+                        <li>You want to establish market authority through video excellence</li>
+                        <li>You are ready to capture market leadership through authentic authority</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="about-section">
+                <h2>My Camera Confidence Coaching</h2>
+                
+                <p style="font-size: 18px; margin-bottom: 32px; font-weight: 500;">Hi and I am Deyson Ortiz. I help professionals own their camera presence and build authority through video.</p>
+
+                <!-- Video Testimonials Section -->
+                <div class="video-testimonials">
+                    <div class="video-testimonial" onclick="openLightbox('video0')" style="max-width: 500px;">
+                        <div class="video-thumbnail" style="padding-bottom: 50.28%; position: relative;"></div>
+                        <div class="video-title">Your Confidence Coach & Producer</div>
+                    </div>
+                </div>
+
+                <p>With over 30 years of experience in the video industry as a video editor, director, and producer, I bring deep technical expertise to every coaching session. My 12 years as a dancer and entertainer taught me the power of stage presence and authentic performance.</p>
+                
+                <p>This unique combination of technical mastery and performance experience allows me to help you build both the technical setup and genuine confidence you need to succeed.</p>
+                
+                <p>Growing up with a father who believed that confidence was essential for success, and that a person who is not shy will never go hungry, shaped my understanding of how confidence transforms lives and businesses.</p>
+                
+                <p><strong>I don't just teach camera confidence — I've been building it for three decades.</strong></p>
+                
+                <p>My students have gone on to build powerful personal brands, win more deals, and establish themselves as the recognized authorities in their fields. When you work with me, you're not learning from theory — you're learning from someone who has mastered both sides of the camera.</p>
+            </section>
+
+            <!-- Final CTA -->
+            <section class="final-cta">
+                <h2 class="section-title">
+                    Secure Your Competitive Advantage Now
+                </h2>
+                <p>
+                    Transform your expertise into powerful video content that builds authority and drives measurable business results.
+                </p>
+                <a href="#" class="cta-button">Schedule Your Strategy Session</a>
+            </section>
+        </div>
+
+        <!-- Script Section -->
+        <script>
+        const videos = {
+          video0: {
+              id: '1095226090',
+              padding: '80.28%'
+          },
+            video1: {
+                id: '1056853912',
+                padding: '63.28%'
+            },
+            video2: {
+                id: '1052267805',
+                padding: '56.25%'
+            },
+            video3: {
+                id: '847106055',
+                padding: '100%'
+            }
+        };
+
+        function openLightbox(videoId) {
+            const lightbox = document.getElementById('lightbox');
+            const videoContainer = document.getElementById('lightbox-video');
+            const video = videos[videoId];
+            const videoSrc = `https://player.vimeo.com/video/${video.id}?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479`;
+
+            videoContainer.style.paddingBottom = video.padding;
+            videoContainer.innerHTML = `
+                <iframe
+                    src="${videoSrc}"
+                    frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                    allowfullscreen>
+                </iframe>`;
+
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event && event.target !== event.currentTarget && !event.target.classList.contains('lightbox-close')) {
+                return;
+            }
+
+            const lightbox = document.getElementById('lightbox');
+            const videoContainer = document.getElementById('lightbox-video');
+
+            lightbox.classList.remove('active');
+            videoContainer.innerHTML = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Fetch high-res Vimeo Thumbnails
+        document.addEventListener('DOMContentLoaded', function () {
+            for (const key in videos) {
+                const videoId = videos[key].id;
+                fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const container = document.querySelector(`.video-testimonial[onclick="openLightbox('${key}')"] .video-thumbnail`);
+                        if (container) {
+                            // Try multiple higher resolution options
+                            let highResThumb = data.thumbnail_url
+                                .replace('_200x150', '_1280x720')
+                                .replace('_295x166', '_1280x720')
+                                .replace('_640x360', '_1280x720')
+                                .replace('_640', '_1280');
+
+                            const img = document.createElement('img');
+                            img.src = highResThumb;
+                            img.alt = data.title;
+                            img.style.width = '100%';
+                            img.style.height = '100%';
+                            img.style.objectFit = 'cover';
+                            img.style.position = 'absolute';
+                            img.style.top = '0';
+                            img.style.left = '0';
+
+                            // Handle image load errors by trying different resolutions
+                            img.onerror = function() {
+                                // Fallback to medium resolution if high-res fails
+                                this.src = data.thumbnail_url.replace('_295x166', '_640x360').replace('_640', '_640');
+                            };
+
+                            container.appendChild(img);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching Vimeo thumbnail:', error);
+                    });
+            }
+        });
+        </script>
+    </body>
+</html>
