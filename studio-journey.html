@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Studio Journey - Camera Confidence Coaching</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Confidence Coaching</a></li>
+                    <li><a href="client-journey.html">Client Confidence Journey</a></li>
+                    <li><a href="studio-journey.html">Studio Build Journey</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>The Studio That<br>Taught Me Something New</h1>
+                    <p class="subtitle">
+                        How building Jill's dream studio<br>reminded me that growth never stops.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Story Section -->
+            <section class="story-section">
+                <p class="lead">
+                    I have spent over 30 years behind the camera.
+                </p>
+                
+                <p>
+                    Editing. Animating. Designing.<br>
+                    A quiet craftsman in the glow of monitors and timelines.
+                </p>
+                
+                <p>
+                    So when a client asked me to build her studio, start to finish, it would have been easy to say,<br>
+                    "That is not what I do."
+                </p>
+                
+                <p>
+                    But something in me said,<br>
+                    "Why not?"
+                </p>
+                
+                <p>
+                    I have worked in studios. Lit sets. Held cameras.<br>
+                    I have learned from masters of the craft, gracious people who let me stand beside them and absorb what could not be taught in textbooks.
+                </p>
+                
+                <p class="lead">
+                    Still, this was different.
+                </p>
+                
+                <p>
+                    This time, I was the one trusted to make it all happen.<br>
+                    Not just the lights and the mics and the cameras…<br>
+                    But to help someone show up fully, on screen, and in spirit.
+                </p>
+            </section>
+
+            <!-- Video Section - Behind the Scenes -->
+            <section class="section">
+                <h2 class="section-title">Behind the Build</h2>
+                
+                <p style="font-size: 18px; color: #666666; margin-bottom: 40px; text-align: center;">
+                    Watch the process unfold as we transform an empty space into Jill's dream studio.
+                </p>
+
+                <div style="display: flex; justify-content: center; margin: 40px 0;">
+                    <div class="video-testimonial" onclick="openLightbox('build_video')" style="max-width: 600px; width: 100%;">
+                        <div class="video-thumbnail" style="padding-bottom: 56.25%; position: relative; background: #000;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255, 255, 255, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <span style="color: #000; font-size: 20px; margin-left: 3px;">▶</span>
+                            </div>
+                        </div>
+                        <div class="video-title">The Studio Build Process</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- The Approach Section -->
+            <section class="section">
+                <h2 class="section-title">How We Made It Happen</h2>
+                
+                <div class="story-section">
+                    <p>
+                        So I did what I always do when something matters:
+                    </p>
+                    
+                    <p>
+                        I studied. I asked questions.<br>
+                        I called up friends.<br>
+                        I listened.
+                    </p>
+                    
+                    <p class="lead">
+                        We built it.<br>
+                        Piece by piece.
+                    </p>
+                    
+                    <p>
+                        A space for her message. Her voice. Her brilliance.
+                    </p>
+                    
+                    <p>
+                        The gear was shiny, with new cameras and silky mics, but the real magic was watching her confidence bloom in the space we created.
+                    </p>
+                    
+                    <p class="lead">
+                        Because this was never just about drywall and softboxes.<br>
+                        It was about showing up.<br>
+                        It was about helping her be seen.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="section">
+                <h2 class="section-title">Jill in Her New Studio</h2>
+                
+                <p style="font-size: 18px; color: #666666; margin-bottom: 40px; text-align: center;">
+                    Hear Jill share her experience of our complete video coaching journey - from confidence training to studio advisement to building her show.
+                </p>
+
+                <!-- Jill's Testimonial -->
+                <div style="display: flex; justify-content: center; margin: 40px 0;">
+                    <div class="video-testimonial" onclick="openLightbox('jill_testimonial')" style="max-width: 600px; width: 100%;">
+                        <div class="video-thumbnail" style="padding-bottom: 56.25%; position: relative; background: #000;">
+                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(255, 255, 255, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <span style="color: #000; font-size: 20px; margin-left: 3px;">▶</span>
+                            </div>
+                        </div>
+                        <div class="video-title">Jill's Video Coaching Testimonial</div>
+                    </div>
+                </div>
+
+                <div class="story-section" style="text-align: center;">
+                    <p class="lead">
+                        That is what I do.<br>
+                        I coach my clients to be confident on camera.<br>
+                        To own their voice.<br>
+                        To tell the story only they can tell.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Philosophy Section -->
+            <section class="section philosophy-section">
+                <div class="container">
+                    <div style="text-align: center; padding: 60px 0;">
+                        <h2 style="font-size: 32px; color: #ffffff; margin-bottom: 32px; font-weight: 700;">
+                            Growth Never Stops
+                        </h2>
+                        
+                        <p style="font-size: 20px; color: #cccccc; margin-bottom: 30px; line-height: 1.6; max-width: 700px; margin-left: auto; margin-right: auto;">
+                            And this project reminded me:<br>
+                            Even after decades in this business, I can still grow.<br>
+                            Still stretch.<br>
+                            Still be humbled by something new.
+                        </p>
+                        
+                        <p style="font-size: 20px; color: #cccccc; margin-bottom: 30px; line-height: 1.6; max-width: 700px; margin-left: auto; margin-right: auto;">
+                            I could have passed it off. Let fear win.<br>
+                            But instead, I leaned in.
+                        </p>
+                        
+                        <p style="font-size: 24px; color: #ffffff; font-weight: 600; margin: 40px 0;">
+                            And I am proud of what we built, together.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Challenge Section -->
+            <section class="section" style="background: #f8f9fa;">
+                <div class="container">
+                    <div style="text-align: center; padding: 40px 0;">
+                        <h2 style="font-size: 32px; color: #000000; margin-bottom: 32px; font-weight: 700;">
+                            What Are You Facing?
+                        </h2>
+                        
+                        <div class="story-section">
+                            <p style="text-align: center;">
+                                So if you are facing something big, something that makes you second-guess.
+                            </p>
+                            
+                            <p style="text-align: center; font-size: 22px; font-weight: 600; color: #000000;">
+                                Ask yourself:<br>
+                                Is it fear?<br>
+                                Or is it potential?
+                            </p>
+                            
+                            <p class="lead" style="text-align: center;">
+                                Because on the other side of fear,<br>
+                                is often exactly where you are meant to be.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="final-cta">
+                <div class="container">
+                    <h2 class="section-title">
+                        Ready to Build Something?
+                    </h2>
+                    <p>
+                        And if you are ready to build something of your own.<br>
+                        A studio, a message, a presence.<br>
+                        I am here to help.
+                    </p>
+                    <a href="#" class="cta-button">Let's Build Together</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+            <div class="lightbox-content">
+                <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
+                <div id="lightbox-video" class="lightbox-video"></div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="script.js"></script>
+        <script>
+        // Add the studio journey videos
+        addVideos({
+            build_video: { id: '1052261779', padding: '56.25%' },
+            jill_testimonial: { id: '1052267805', padding: '56.25%' }
+        });
+        </script>
+    </body>
+</html>

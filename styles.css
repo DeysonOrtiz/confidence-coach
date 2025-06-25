@@ -190,6 +190,14 @@ body {
     margin-bottom: 32px;
 }
 
+/* Philosophy Section */
+.philosophy-section {
+    background: #000000;
+    color: #ffffff;
+    border-radius: 16px;
+    margin: 40px 0;
+}
+
 /* Benefits Grid */
 .benefits-grid {
     display: grid;
