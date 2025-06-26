@@ -115,6 +115,16 @@ body {
     background: #f8f9fa;
 }
 
+/* Service identifier styling */
+.service-identifier {
+    font-size: 14px;
+    color: #999999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
