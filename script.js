@@ -37,9 +37,10 @@ function setVideos(pageVideos) {
   videos = pageVideos;
 }
 
-function openLightbox(videoId) {
+function openLightbox(videoId, title = "") {
   const lightbox = document.getElementById("lightbox");
   const videoContainer = document.getElementById("lightbox-video");
+  const lightboxTitle = document.getElementById("lightbox-video-title");
   const video = videos[videoId];
 
   if (!video) {
@@ -65,6 +66,29 @@ function openLightbox(videoId) {
             allowfullscreen>
         </iframe>`;
 
+  // Auto-extract title if not provided
+  let displayTitle = title;
+  if (!displayTitle) {
+    // Find the video element that was clicked and extract its title
+    const videoElement = document.querySelector(
+      `[onclick*="openLightbox('${videoId}')"]`,
+    );
+    if (videoElement) {
+      const titleElement = videoElement.querySelector(".video-title");
+      if (titleElement) {
+        displayTitle = titleElement.textContent.trim();
+      }
+    }
+  }
+
+  // Set title if we have one and element exists
+  if (displayTitle && lightboxTitle) {
+    lightboxTitle.textContent = displayTitle;
+    lightboxTitle.style.display = "block";
+  } else if (lightboxTitle) {
+    lightboxTitle.style.display = "none";
+  }
+
   // Hide navigation arrows for videos
   hideImageNavigation();
 
@@ -82,6 +106,12 @@ function openLightbox(videoId) {
 function openImageLightbox(imageSrc, altText = "", imageIndex = null) {
   const lightbox = document.getElementById("lightbox");
   const videoContainer = document.getElementById("lightbox-video");
+  const lightboxTitle = document.getElementById("lightbox-video-title");
+
+  // Hide title for images
+  if (lightboxTitle) {
+    lightboxTitle.style.display = "none";
+  }
 
   // Set current image index if provided
   if (imageIndex !== null) {
@@ -228,9 +258,16 @@ function closeLightbox(event) {
   setTimeout(() => {
     const videoContainer = document.getElementById("lightbox-video");
     const lightboxContent = lightbox.querySelector(".lightbox-content");
+    const lightboxTitle = document.getElementById("lightbox-video-title");
 
     lightbox.style.display = "none";
     videoContainer.innerHTML = "";
+
+    // Hide title
+    if (lightboxTitle) {
+      lightboxTitle.style.display = "none";
+      lightboxTitle.textContent = "";
+    }
 
     // Hide navigation
     hideImageNavigation();
@@ -342,16 +379,27 @@ function makeImagesClickable() {
   });
 }
 
-// Function to load video thumbnails
+// Function to load video thumbnails - updated to handle auto-title extraction
 function loadVideoThumbnails() {
   for (const key in videos) {
     const videoId = videos[key].id;
     fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${videoId}`)
       .then((response) => response.json())
       .then((data) => {
-        const container = document.querySelector(
-          `.video-testimonial[onclick="openLightbox('${key}')"] .video-thumbnail`,
-        );
+        // Find video container using any onclick format
+        const containerSelectors = [
+          `.video-testimonial[onclick*="openLightbox('${key}')"] .video-thumbnail`,
+          `.video-testimonial[onclick*="openLightbox('${key}',"] .video-thumbnail`,
+          `.video-testimonial[onclick*='openLightbox("${key}")'] .video-thumbnail`,
+          `.video-testimonial[onclick*='openLightbox("${key}",'] .video-thumbnail`,
+        ];
+
+        let container = null;
+        for (const selector of containerSelectors) {
+          container = document.querySelector(selector);
+          if (container) break;
+        }
+
         if (container) {
           // Try multiple higher resolution options
           let highResThumb = data.thumbnail_url
@@ -526,7 +574,7 @@ document.addEventListener("click", function (event) {
   }
 });
 
-// Utility function to create video HTML (for dynamic video creation)
+// Utility function to create video HTML (for dynamic video creation) - simplified
 function createVideoHTML(videoKey, title, customClass = "") {
   return `
         <div class="video-testimonial ${customClass}" onclick="openLightbox('${videoKey}')">

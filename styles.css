@@ -930,6 +930,28 @@ body {
     transform: scale(1.1);
 }
 
+/* Lightbox Video Title */
+.lightbox-video-title {
+    background: #000000;
+    color: #ffffff;
+    padding: 16px 24px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Outfit", "Inter", sans-serif;
+    letter-spacing: 0.2px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.lightbox.active .lightbox-video-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
 /* Navigation arrows for image lightbox */
 .lightbox-nav {
     position: absolute;
