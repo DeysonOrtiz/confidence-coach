@@ -7,6 +7,16 @@
         <link rel="stylesheet" href="styles.css" />
     </head>
     <body>
+        <!-- Scroll Notification -->
+        <div
+            id="scrollNotification"
+            class="scroll-notification"
+            onclick="scrollToContent()"
+        >
+            Scroll to see Jill's transformation
+            <span class="scroll-arrow">⬇</span>
+        </div>
+
         <!-- Navigation -->
         <nav class="nav">
             <div class="nav-container">
@@ -44,7 +54,7 @@
                     <p class="service-identifier">
                         Case Study: Studio Build & Design
                     </p>
-                    <h1>She Wanted More Than Just a Studio</h1>
+                    <h1>She Wanted More Than Just a Video Studio</h1>
                     <p class="subtitle">She Wanted to Feel at Home on Camera</p>
                 </div>
             </section>
@@ -455,6 +465,82 @@
                         And the highest-quality results!"
                     </p>
 
+                    <!-- Featured Image - Jill's Confidence -->
+                    <div style="margin: 50px 0">
+                        <img
+                            src="https://deysonortiz.github.io/confidence-coach/images/Image-of-Jill-Laughing-on-Camera-happy.jpg"
+                            alt="Jill laughing and happy on camera"
+                            style="
+                                width: 100%;
+                                max-width: 700px;
+                                border-radius: 12px;
+                                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+                            "
+                        />
+                        <p
+                            style="
+                                text-align: center;
+                                font-size: 16px;
+                                color: #666;
+                                margin-top: 16px;
+                                font-style: italic;
+                                font-weight: 500;
+                            "
+                        >
+                            Jill's natural confidence shines through
+                        </p>
+                    </div>
+
+                    <!-- Behind the Scenes Image -->
+                    <div style="margin: 40px 0">
+                        <img
+                            src="https://deysonortiz.github.io/confidence-coach/images/Behind-the-scenes-view-from-switcher.jpeg"
+                            alt="Behind the scenes view from the video switcher"
+                            style="
+                                width: 100%;
+                                max-width: 500px;
+                                border-radius: 8px;
+                                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                            "
+                        />
+                        <p
+                            style="
+                                text-align: center;
+                                font-size: 14px;
+                                color: #666;
+                                margin-top: 8px;
+                                font-style: italic;
+                            "
+                        >
+                            Professional control at her fingertips
+                        </p>
+                    </div>
+
+                    <div style="margin: 40px 0">
+                        <img
+                            src="https://deysonortiz.github.io/confidence-coach/images/Jill-Behind-The-Scenes-Interviewing-Don-Scala.jpeg"
+                            alt="Jill behind the scenes interviewing Don Scala"
+                            style="
+                                width: 100%;
+                                max-width: 600px;
+                                border-radius: 8px;
+                                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                            "
+                        />
+                        <p
+                            style="
+                                text-align: center;
+                                font-size: 14px;
+                                color: #666;
+                                margin-top: 8px;
+                                font-style: italic;
+                            "
+                        >
+                            Jill in her element - conducting interviews with
+                            ease
+                        </p>
+                    </div>
+
                     <div style="margin: 40px 0">
                         <img
                             src="https://deysonortiz.github.io/confidence-coach/images/Image-of-new-Studio-in-use-during-an-interview.jpg"
@@ -475,7 +561,7 @@
                                 font-style: italic;
                             "
                         >
-                            The studio in action
+                            The finished studio - a space that feels like home
                         </p>
                     </div>
 
@@ -573,6 +659,53 @@
                 build_video: { id: "1052261779", padding: "56.25%" },
                 jill_testimonial: { id: "1052267805", padding: "56.25%" },
             });
+
+            // Scroll notification functionality
+            function scrollToContent() {
+                const firstSection = document.querySelector(".story-section");
+                if (firstSection) {
+                    firstSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
+                }
+            }
+
+            // Hide notification when user scrolls
+            let scrollTimeout;
+            window.addEventListener("scroll", function () {
+                const notification =
+                    document.getElementById("scrollNotification");
+                const scrollY = window.scrollY;
+
+                // Hide notification after user scrolls 100px
+                if (scrollY > 100) {
+                    notification.classList.add("hidden");
+                }
+
+                // Clear any existing timeout
+                clearTimeout(scrollTimeout);
+
+                // Set timeout to show notification again if user stops scrolling at top
+                scrollTimeout = setTimeout(() => {
+                    if (scrollY <= 100) {
+                        notification.classList.remove("hidden");
+                    }
+                }, 2000);
+            });
+
+            // Auto-hide notification after 8 seconds
+            setTimeout(() => {
+                const notification =
+                    document.getElementById("scrollNotification");
+                if (window.scrollY <= 100) {
+                    notification.style.animation =
+                        "fadeInUp 0.6s ease-out reverse";
+                    setTimeout(() => {
+                        notification.classList.add("hidden");
+                    }, 600);
+                }
+            }, 8000);
         </script>
     </body>
 </html>
